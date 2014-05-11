@@ -36,5 +36,29 @@ $this->pageTitle=Yii::app()->name;
 			<td>Test</td>
 			<td>0.7688</td>
 		</tr>
+		<tr>
+			<td>3</td>
+			<td>Test</td>
+			<td>Test</td>
+			<td>0.6688</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Test</td>
+			<td>Test</td>
+			<td>0.6588</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Test</td>
+			<td>Test</td>
+			<td>0.6488</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Test</td>
+			<td>Test</td>
+			<td>0.5688</td>
+		</tr>
 	</table>
 </div>
