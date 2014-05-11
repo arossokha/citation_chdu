@@ -37,8 +37,8 @@
 		</div>
 
 		<div class="search">
-			<input type="text" class="main-search">
-			<input type="submit" class="main-search-button" value="Search">
+			<input type="text" class="main-search" placeholder="Search by article name...">
+			<input type="submit" class="main-search-button"  value="Search">
 		</div>
 
 		
