@@ -9,8 +9,7 @@ body
 
 #page
 {
-	margin-top: 5px;
-	margin-bottom: 5px;
+	
 	background: white;
 	border: 1px solid #C9E0ED;
 }
@@ -19,7 +18,7 @@ body
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	background:white url(bgheader.gif) repeat-x left top;
 }
 
 #content
@@ -38,18 +37,33 @@ body
 	margin: 10px 20px;
 	font-size: 0.8em;
 	text-align: center;
-	border-top: 1px solid #C9E0ED;
+	border-top: 1px solid #E65613;
 }
 
 #logo
 {
-	padding: 10px 20px;
+	padding: 50px 20px 0 50px;
+	height:50px;
 	font-size: 200%;
+}
+
+div.search{
+	padding: 10px 10px;
+
+}
+
+input.main-search{
+	width:90%;
+}
+
+input.main-search-button{
+	width:9%;
 }
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:white ;
+	border-radius: 13px;
 }
 
 #mainmenu ul
@@ -65,7 +79,7 @@ body
 
 #mainmenu ul li a
 {
-	color:#ffffff;
+	color:#05BBA9;
 	background-color:transparent;
 	font-size:12px;
 	font-weight:bold;
@@ -75,8 +89,10 @@ body
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	color: #05BBA9;
+	display:inline-block;
+	border-top: 1px solid #E65613;
+	border-bottom: 1px solid #E65613;
 	text-decoration:none;
 }
 
@@ -226,4 +242,37 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+div.menu-row{
+	widht:100%;
+	text-align: center;
+}
+div.menu-container{
+	width:300px;
+	height:300px;
+	border: 1px solid #E65613;
+	border-radius: 20px;
+	position:relative;
+	display:inline-block;
+	margin-right: 30px;
+}
+div.menu-container:hover{
+	border: 1px solid #05BBA9;
+}
+div.menu-container img{
+	width:200px;
+	position:absolute;
+	margin: auto;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+div.menu-container div{
+	position:absolute;
+	width:300px;
+	margin: auto;
+	top:250px;
+	text-align: center;
 }

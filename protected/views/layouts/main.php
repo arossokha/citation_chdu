@@ -23,8 +23,13 @@
 <div class="container" id="page">
 
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<div id="logo"><img src="css/logo.gif"></div>
 	</div><!-- header -->
+
+	<div class="search">
+		<input type="text" class="main-search">
+		<input type="submit" class="main-search-button" value="Search">
+	</div>
 
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
