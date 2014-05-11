@@ -19,10 +19,10 @@ $this->pageTitle=Yii::app()->name;
 	<h3>Top 10 articles</h3>
 	<table>
 		<tr>
-			<td>Raiting</td>
-			<td>Author</td>
-			<td>Article</td>
-			<td>Index Citation</td>
+			<th>Raiting</th>
+			<th>Author</th>
+			<th>Article</th>
+			<th>Index Citation</th>
 		</tr>
 		<tr>
 			<td>1</td>

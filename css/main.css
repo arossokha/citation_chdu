@@ -91,8 +91,8 @@ input.main-search-button{
 {
 	color: #05BBA9;
 	display:inline-block;
-	border-top: 1px solid #E65613;
-	border-bottom: 1px solid #E65613;
+	border-top: 1px solid #E6BA1E;
+	border-bottom: 1px solid #E6BA1E;
 	text-decoration:none;
 }
 
@@ -251,7 +251,7 @@ div.menu-row{
 div.menu-container{
 	width:300px;
 	height:300px;
-	border: 1px solid #E65613;
+	border: 1px solid #E6BA1E;
 	border-radius: 20px;
 	position:relative;
 	display:inline-block;
