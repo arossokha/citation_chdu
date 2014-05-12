@@ -291,7 +291,7 @@ div.menu-container:hover{
 	border: 1px solid #05BBA9;
 }
 div.menu-container img{
-	width:200px;
+	width:190px;
 	position:absolute;
 	margin: auto;
 	top:0;
@@ -398,4 +398,48 @@ div.menu-container div{
 }
 .index-table tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
+}
+
+
+
+
+.gallery{
+	float:left;
+	width:100%;
+	height:350px;
+	overflow:auto;
+	white-space: nowrap;
+}
+
+.authors-block h2{
+	padding-top: 10px;
+
+}
+
+
+.author-info{
+	border:3px dashed #E6BA1E;
+	border-radius: 30px;
+	padding: 20px;
+	height: 200px;
+}
+
+.author-info img{
+	width:200px;
+	float: left;
+}
+
+.author-about{
+	display: inline-block;
+	float:left;
+	padding-left: 50px;
+}
+
+.articles-list{
+	padding: 20px;
+}
+
+.articles-list img{
+	width: 50px;
+	float: right;
 }

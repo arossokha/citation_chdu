@@ -7,3 +7,4 @@ Articles
 <a href="<?php echo $this->createUrl('/site/page', array('view'=>'article2')); ?>">
         Article 2
     </a>
+
