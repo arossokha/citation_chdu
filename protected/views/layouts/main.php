@@ -20,10 +20,14 @@
 
 <body>
 
-<div id="header">
+<header>
+	<div class="headmenu">
 		<div id="logo">
 			<img src="css/logo.gif">
-			<div id="mainmenu">
+			
+		</div>
+
+		<div id="mainmenu">
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'items'=>array(
 					array('label'=>'Home', 'url'=>array('/site/index')),
@@ -34,8 +38,7 @@
 				),
 			)); ?>
 		</div><!-- mainmenu -->
-		</div>
-
+	</div>
 		<div class="search">
 			<input type="text" class="main-search" placeholder="Search by article name...">
 			<input type="submit" class="main-search-button"  value="Search">
@@ -43,7 +46,7 @@
 
 		
 		
-	</div><!-- header -->
+	</header><!-- header -->
 
 <div class="container" id="page">
 
@@ -58,13 +61,15 @@
 
 	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+	
 
 </div><!-- page -->
+
+<footer>
+		<p>Copyright &copy; <?php echo date('Y'); ?> by My Company.
+		<p>All Rights Reserved.
+		<p><?php echo Yii::powered(); ?>
+</footer><!-- footer -->
 
 </body>
 </html>

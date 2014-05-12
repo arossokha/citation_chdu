@@ -15,14 +15,14 @@ $this->pageTitle=Yii::app()->name;
 	</div>
 </div>
 
-<div class="table-top">
+<div >
 	<h3>Top 10 articles</h3>
-	<table>
+	<table class="index-table">
 		<tr>
-			<th>Raiting</th>
-			<th>Author</th>
-			<th>Article</th>
-			<th>Index Citation</th>
+			<td>Raiting</td>
+			<td>Author</td>
+			<td>Article</td>
+			<td>Index Citation</td>
 		</tr>
 		<tr>
 			<td>1</td>
