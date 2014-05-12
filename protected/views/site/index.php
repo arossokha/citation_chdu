@@ -5,13 +5,13 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <div class="menu-row">
-	<a href="/authors">
+	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'authors')); ?>">
 		<div class="menu-container">
 			<img src="img/authors.png">
 			<div>Authors</div>
 		</div>
 	</a>
-	<a href="/articles">
+	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'articles')); ?>">
 		<div class="menu-container">
 			<img src="img/articles.png">
 			<div>Articles</div>
