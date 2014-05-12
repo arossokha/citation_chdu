@@ -328,7 +328,12 @@ div.menu-container div{
 	-moz-border-radius-topleft:0px;
 	-webkit-border-top-left-radius:0px;
 	border-top-left-radius:0px;
-}.index-table table{
+}
+.index-table img{
+	width:30px;
+	float: right;
+}
+.index-table table{
     border-collapse: collapse;
         border-spacing: 0;
 	width:100%;
@@ -440,6 +445,6 @@ div.menu-container div{
 }
 
 .articles-list img{
-	width: 50px;
+	width: 30px;
 	float: right;
 }

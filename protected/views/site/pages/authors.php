@@ -7,6 +7,7 @@
 		<option>Computer Science</option>
 		<option>History</option>
 		<option>Languages</option>
+		<option>All</option>
 	</datalist>
 </div>
 <div class="authors-block">
