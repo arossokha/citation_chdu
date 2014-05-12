@@ -5,18 +5,22 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <div class="menu-row">
-	<div class="menu-container">
-		<img src="img/authors.png">
-		<div>Authors</div>
-	</div>
-	<div class="menu-container">
-		<img src="img/articles.png">
-		<div>Articles</div>
-	</div>
+	<a href="/authors">
+		<div class="menu-container">
+			<img src="img/authors.png">
+			<div>Authors</div>
+		</div>
+	</a>
+	<a href="/articles">
+		<div class="menu-container">
+			<img src="img/articles.png">
+			<div>Articles</div>
+		</div>
+	</a>
 </div>
 
 <div >
-	<h3>Top 10 articles</h3>
+	<h2>Top articles</h2>
 	<table class="index-table">
 		<tr>
 			<td>Raiting</td>
