@@ -76,13 +76,15 @@ input.main-search{
 
 input.main-search-button{
 
-    width:9%;
+    width:100px;
     background:url(/img/button-search.png) no-repeat;
-    cursor:pointer;
-    border:none;
-    
+    cursor: pointer;   
+    border:none; 
     height:20px;
-    border:1px solid black;
+}
+
+input.main-search-button:active{
+	background:url(/img/button-search-pressed.png) no-repeat;
 }
 
 #mainmenu
@@ -357,7 +359,7 @@ div.menu-container div{
 .index-table tr:nth-child(even)    { background-color:#ffffff; }.index-table td{
 	vertical-align:middle;
 	
-	font-family: ""
+	font-family: "Helvetica Neue", Arial, "Lucida Grande", sans-serif;;
 	border:1px solid #ffffff;
 	border-width:0px 1px 1px 0px;
 	text-align:left;
@@ -381,7 +383,7 @@ div.menu-container div{
 	text-align:center;
 	border-width:0px 0px 1px 1px;
 	font-size:18px;
-
+	font-family: "Octin";
 	color:#ffffff;
 }
 .index-table tr:first-child:hover td{
