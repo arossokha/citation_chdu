@@ -59,7 +59,7 @@ footer
 #logo
 {
 	
-	height:50px;
+	
 	font-size: 200%;
 	float: left;
 }
@@ -89,10 +89,9 @@ input.main-search-button:active{
 
 #mainmenu
 {
-	border-radius: 10px;
+	
 	display:inline-block;
-	top:50px;
-	left:650px;
+	
 	float: right;
 }
 
