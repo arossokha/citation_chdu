@@ -37,8 +37,8 @@ a img {border:none;}
 
 /* typography.css */
 html {font-size:100.01%;}
-body {font-size:75%;color:#222;background:#fff;font-family:"Octin";}
-h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111; font-family: "College";}
+body {font-size:75%;color:#888;background:#fff;font-family:"Octin";}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#888; font-family: "College";}
 h1 {font-size:2em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:1.8em;margin-bottom:0.75em;}
 h3 {font-size:1.4em;line-height:1;margin-bottom:1em; }
@@ -52,7 +52,7 @@ p .left {margin:1.5em 1.5em 1.5em 0;padding:0;}
 .right {float:right !important;}
 p .right {margin:1.5em 0 1.5em 1.5em;padding:0;}
 a:focus, a:hover {color:#62BBAD;}
-a {color:#E6BA1E;text-decoration:underline;}
+a {color:#888;text-decoration:underline;}
 blockquote {margin:1.5em;color:#666;font-style:italic;}
 strong, dfn {font-weight:bold;}
 em, dfn {font-style:italic;}

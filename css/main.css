@@ -3,7 +3,7 @@ body
 {
 	margin: 0;
 	padding: 0;
-	color: #555;
+	color: #888;
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #F8F8EC;
 }
@@ -307,6 +307,10 @@ div.menu-container div{
 	text-align: center;
 }
 
+.top-table>a{
+	float:right;
+}
+
 .index-table {
 	margin:0px;padding:0px;
 	width:100%;
@@ -370,7 +374,7 @@ div.menu-container div{
 	text-align:left;
 	padding:7px;
 	font-size:12px;
-	color:#000000;
+	color:#888;
 }.index-table tr:last-child td{
 	border-width:0px 1px 0px 0px;
 }.index-table tr td:last-child{

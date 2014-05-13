@@ -19,13 +19,14 @@ $this->pageTitle=Yii::app()->name;
 	</a>
 </div>
 
-<div >
+<div class="top-table">
 	<h2>Top articles</h2>
 	<table class="index-table">
 		<tr>
 			<td>Raiting</td>
 			<td>Author</td>
 			<td>Article</td>
+			<td>Category</td>
 			<td>Index Citation</td>
 			<td>Download link</td>
 		</tr>
@@ -33,6 +34,7 @@ $this->pageTitle=Yii::app()->name;
 			<td>1</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>Computer Science</td>
 			<td>0.7788</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
@@ -40,6 +42,7 @@ $this->pageTitle=Yii::app()->name;
 			<td>2</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>Computer Science</td>
 			<td>0.7688</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
@@ -47,6 +50,7 @@ $this->pageTitle=Yii::app()->name;
 			<td>3</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>Languages</td>
 			<td>0.6688</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
@@ -54,6 +58,7 @@ $this->pageTitle=Yii::app()->name;
 			<td>4</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>Computer Science</td>
 			<td>0.6588</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
@@ -61,15 +66,18 @@ $this->pageTitle=Yii::app()->name;
 			<td>5</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>Computer Science</td>
 			<td>0.6488</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
 		<tr>
-			<td>5</td>
+			<td>6</td>
 			<td>Test</td>
 			<td>Test</td>
+			<td>History</td>
 			<td>0.5688</td>
 			<td><a href="#"><img src="/img/pdf.png">></a><td>
 		</tr>
 	</table>
+	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'articles')); ?>">View all -></a>
 </div>

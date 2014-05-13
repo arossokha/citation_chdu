@@ -1,15 +1,18 @@
 
 <h1>Authors</h1>
-<div class="filter">
-	Category 
-	<input list="category-list">
-	<datalist id="category-list">
-		<option>Computer Science</option>
-		<option>History</option>
-		<option>Languages</option>
-		<option>All</option>
-	</datalist>
-</div>
+<form action="" method="post" class="bootstrap-frm">
+    <h1>Filter Form 
+        <span>Please fill fields you want to filter.</span>
+    </h1>
+     <label>
+        <span>Category:</span><select name="category">
+        <option value="Computer Science">Computer Science</option>
+		<option value="History">History</option>
+		<option value="Languages">Languages</option>
+		<option value="all">All</option>
+        </select>
+    </label>     
+</form>
 <div class="authors-block">
 	<h2>Computer Science</h2>
 	<div class="gallery">

@@ -14,6 +14,7 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/filter-form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -65,9 +66,8 @@
 </div><!-- page -->
 
 <footer>
-		<p>Copyright &copy; <?php echo date('Y'); ?> by My Company.
+		<p>Copyright &copy; <?php echo date('Y'); ?> by BSSU 501m.
 		<p>All Rights Reserved.
-		<p><?php echo Yii::powered(); ?>
 </footer><!-- footer -->
 
 </body>
