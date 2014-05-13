@@ -106,4 +106,23 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+	public function actionPull() {
+		$out =array();
+		chdir(Yii::getPathOfAlias('webroot'));
+		$command = 'git pull';
+		$r = exec($command,$out);
+		foreach ($out as $row) {
+			echo $row.'<br>';
+		}
+
+		$command = 'git log';
+		$r = exec($command,$out);
+		foreach ($out as $row) {
+			echo $row.'<br>';
+		}
+
+
+	}
+
 }
