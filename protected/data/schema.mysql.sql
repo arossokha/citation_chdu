@@ -1,28 +1,76 @@
-CREATE TABLE tbl_user (
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(128) NOT NULL,
-    password VARCHAR(128) NOT NULL,
-    email VARCHAR(128) NOT NULL
-);
+-- phpMyAdmin SQL Dump
+-- version 3.4.5
+-- http://www.phpmyadmin.net
+--
+-- Хост: localhost
+-- Время создания: Май 26 2014 г., 12:52
+-- Версия сервера: 5.5.16
+-- Версия PHP: 5.3.8
 
-INSERT INTO tbl_user (username, password, email) VALUES ('test1', 'pass1', 'test1@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test2', 'pass2', 'test2@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test3', 'pass3', 'test3@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test4', 'pass4', 'test4@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test5', 'pass5', 'test5@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test6', 'pass6', 'test6@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test7', 'pass7', 'test7@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test8', 'pass8', 'test8@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test9', 'pass9', 'test9@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test10', 'pass10', 'test10@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test11', 'pass11', 'test11@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test12', 'pass12', 'test12@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test13', 'pass13', 'test13@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test14', 'pass14', 'test14@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test15', 'pass15', 'test15@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test16', 'pass16', 'test16@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test17', 'pass17', 'test17@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test18', 'pass18', 'test18@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test19', 'pass19', 'test19@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test20', 'pass20', 'test20@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test21', 'pass21', 'test21@example.com');
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- База данных: `lib_chdu`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `articles`
+--
+
+CREATE DATABASE lib_chdu COLLATE utf8_general_ci;
+use lib_chdu;
+CREATE USER 'lib_chdu'@'localhost' IDENTIFIED BY  'lib_chdu';
+GRANT ALL PRIVILEGES ON  `lib_chdu` . * TO  'lib_chdu'@'localhost';
+
+
+CREATE TABLE IF NOT EXISTS `articles` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `subject` varchar(200) NOT NULL,
+  `year` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `authors`
+--
+
+CREATE TABLE IF NOT EXISTS `authors` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `authors`
+--
+
+INSERT INTO `authors` (`id`, `name`) VALUES
+(1, 'test_author'),
+(2, 'test_author');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `authors_articles`
+--
+
+CREATE TABLE IF NOT EXISTS `authors_articles` (
+  `id_author` int(11) NOT NULL,
+  `id_article` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

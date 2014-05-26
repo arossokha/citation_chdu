@@ -50,7 +50,7 @@
 			<td>Test</td>
 			<td>Computer Science</td>
 			<td>0.7788</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 		<tr>
 			<td>2</td>
@@ -58,7 +58,7 @@
 			<td>Test</td>
 			<td>Computer Science</td>
 			<td>0.7688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 		<tr>
 			<td>3</td>
@@ -66,7 +66,7 @@
 			<td>Test</td>
 			<td>Languages</td>
 			<td>0.6688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 		<tr>
 			<td>4</td>
@@ -74,7 +74,7 @@
 			<td>Test</td>
 			<td>Computer Science</td>
 			<td>0.6588</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 		<tr>
 			<td>5</td>
@@ -82,7 +82,7 @@
 			<td>Test</td>
 			<td>Computer Science</td>
 			<td>0.6488</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 		<tr>
 			<td>6</td>
@@ -90,6 +90,6 @@
 			<td>Test</td>
 			<td>History</td>
 			<td>0.5688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
+			<td><a href="#"><img src="/images/pdf.png">></a><td>
 		</tr>
 	</table>

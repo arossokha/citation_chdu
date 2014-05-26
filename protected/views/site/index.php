@@ -7,13 +7,13 @@ $this->pageTitle=Yii::app()->name;
 <div class="menu-row">
 	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'authors')); ?>">
 		<div class="menu-container">
-			<img src="img/authors.png">
+			<img src="/images/authors.png">
 			<div>Authors</div>
 		</div>
 	</a>
 	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'articles')); ?>">
 		<div class="menu-container">
-			<img src="img/articles.png">
+			<img src="/images/articles.png">
 			<div>Articles</div>
 		</div>
 	</a>
@@ -30,54 +30,21 @@ $this->pageTitle=Yii::app()->name;
 			<td>Index Citation</td>
 			<td>Download link</td>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Computer Science</td>
-			<td>0.7788</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Computer Science</td>
-			<td>0.7688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Languages</td>
-			<td>0.6688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Computer Science</td>
-			<td>0.6588</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>Computer Science</td>
-			<td>0.6488</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Test</td>
-			<td>Test</td>
-			<td>History</td>
-			<td>0.5688</td>
-			<td><a href="#"><img src="/img/pdf.png">></a><td>
-		</tr>
+
+		<?php
+			foreach (Article::model()->findAll(array(
+				'order' => '`index` DESC'
+				)) as $key => $article) {
+				echo "<tr>";
+					echo "<td>".($key+1)."</td>";
+					echo "<td>".$article->getAuthorsList()."</td>";
+					echo "<td>{$article->name}</td>";
+					echo "<td>{$article->category->name}</td>";
+					echo "<td>{$article->index}</td>";
+					echo "<td><a href=\"{$article->file}\"><img src='/images/pdf.png'></td>";
+				echo "</tr>";
+			}
+		?>
 	</table>
 	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'articles')); ?>">View all -></a>
 </div>

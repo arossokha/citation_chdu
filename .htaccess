@@ -1,0 +1,27 @@
+Action phpcgi-script /cgi-bin/php
+AddHandler phpcgi-script .php
+
+<IfModule mod_header.c>
+Header unset Pragma
+FileETag None
+Header unset ETag
+
+# cache images/pdf docs for 10 days
+<FilesMatch "\.(ico|pdf|jpg|jpeg|png|gif|js|css)$">
+  Header set Cache-Control "max-age=864000, public, must-revalidate"
+  Header unset Last-Modified
+</FilesMatch>
+</IfModule>
+
+Options +FollowSymLinks
+RewriteEngine on
+# RewriteCond %{HTTP_HOST} ^citation\.ru$ [NC]
+# RewriteRule ^(.*)$ http://www.citation.ru/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin.* backend.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php

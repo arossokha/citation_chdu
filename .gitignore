@@ -1,2 +1,4 @@
 protected/runtime/*
 assets/*
+public/*
+.idea/*

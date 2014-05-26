@@ -107,22 +107,63 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 
-	public function actionPull() {
-		$out =array();
-		chdir(Yii::getPathOfAlias('webroot'));
-		$command = 'git pull';
-		$r = exec($command,$out);
-		foreach ($out as $row) {
-			echo $row.'<br>';
-		}
+	// public function actionPull() {
+	// 	$out =array();
+	// 	chdir(Yii::getPathOfAlias('webroot'));
+	// 	$command = 'git pull -v ';
+	// 	$r = exec($command,$out);
+	// 	foreach ($out as $row) {
+	// 		echo $row.'<br>';
+	// 	}
 
-		$command = 'git log';
-		$r = exec($command,$out);
-		foreach ($out as $row) {
-			echo $row.'<br>';
-		}
+	// 	$command = 'git log';
+	// 	$r = exec($command,$out);
+	// 	foreach ($out as $row) {
+	// 		echo $row.'<br>';
+	// 	}
+	// }
 
+	public function actionCategoryautocomplete() {
+		$term = Yii::app()->getRequest()->getParam('term');
 
+        if(Yii::app()->request->isAjaxRequest && $term) {
+            $modelName = "Category";
+            $dataField = 'name';
+            $valueField = 'categoryId';
+            $criteria = new CDbCriteria;
+
+            $criteria->addSearchCondition($dataField, $term);
+            $criteria->limit = 10;
+            $models = ActiveRecord::model($modelName)->findAll($criteria);
+            $result = array();
+            foreach ($models as $model) {
+                $result[] = array($valueField => $model->{$valueField}, 'label' => $model->{$dataField});
+            }
+            echo CJSON::encode($result);
+            Yii::app()->end();
+        }
 	}
+
+	public function actionAuthorautocomplete() {
+		$term = Yii::app()->getRequest()->getParam('term');
+
+        if(Yii::app()->request->isAjaxRequest && $term) {
+            $modelName = "Author";
+            $dataField = 'fullName';
+            $valueField = 'authorId';
+            $criteria = new CDbCriteria;
+
+            $criteria->addSearchCondition($dataField, $term);
+            $criteria->limit = 10;
+            $models = ActiveRecord::model($modelName)->findAll($criteria);
+            $result = array();
+            foreach ($models as $model) {
+                $result[] = array($valueField => $model->{$valueField}, 'label' => $model->{$dataField});
+            }
+            echo CJSON::encode($result);
+            Yii::app()->end();
+        }
+	}
+
 
 }
