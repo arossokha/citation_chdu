@@ -30,12 +30,11 @@
 <div id="wrapper">
 	<div id="top">
 		<p id="logo">
-			<a href="<?php echo CHtml::encode($this->adminLogoUrl); ?>"><img
-				src="<?php echo CHtml::encode($this->adminLogoPath); ?>" width="52" height="50"></a>
+			<a href="<?php echo CHtml::encode($this->adminLogoUrl); ?>"></a>
 		</p>
 
 		<p id="name">
-			<a href="/admin"><img src="<?php echo CHtml::encode($this->adminTitlePath); ?>" width="165" height="50"></a>
+			<a href="/admin"></a>
 		</p>
 	</div>
 	<?php echo $content; ?>
@@ -49,8 +48,7 @@
 		</p>
 
 		<p class="logo">
-			<a href="<?php echo CHtml::encode($this->footerLogoUrl); ?>"><img
-				src="<?php echo CHtml::encode($this->footerLogoPath); ?>" alt=""></a>
+			<a href="<?php echo CHtml::encode($this->footerLogoUrl); ?>">CMSTech</a>
 		</p>
 	</div>
 </div>

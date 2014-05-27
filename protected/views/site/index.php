@@ -5,7 +5,7 @@ $this->pageTitle=Yii::app()->name;
 ?>
 
 <div class="menu-row">
-	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'authors')); ?>">
+	<a href="<?php echo $this->createUrl('/author'); ?>">
 		<div class="menu-container">
 			<img src="/images/authors.png">
 			<div>Authors</div>

@@ -14,7 +14,10 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('photo')); ?>:</b>
-	<?php echo CHtml::encode($data->photo); ?>
+    <br />
+	<?php echo CHtml::image($data->photo,$data->fullName,array(
+        'width' => '200px',
+    )); ?>
 	<br />
 
 
