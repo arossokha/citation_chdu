@@ -12,7 +12,7 @@ $this->menu=array(
 <h1>Authors</h1>
 
 <?php 
-Author::updateAllIndexes();
+
 if(count($data)) {
     $gap = '<br /><br /><br />';
     $num = 0;

@@ -268,4 +268,22 @@ class Article extends ActiveRecord
 		}
 		return $data;
 	}
+
+    public static function updateAllIndexes() {
+
+        $data = Yii::app()->db->createCommand('
+            SELECT ar.articleId,COUNT(articleId) as acount FROM `Article` ar
+            LEFT JOIN ArticleArticle USING(articleId)
+            GROUP BY ar.articleId')->queryAll();
+        foreach ($data as $row) {
+            Yii::app()->db->createCommand('
+                UPDATE Article set `index` = :ind 
+                WHERE articleId = :aId
+            ')->execute(array(
+                    ':ind' => $row['acount'],
+                    ':aId' => $row['articleId'],
+                ));
+        }
+    }
+
 }

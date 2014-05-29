@@ -15,6 +15,8 @@ $this->menu=array(
 <div class="top-table">
     <h1>Articles</h1>
     <?php
+        Article::updateAllIndexes();
+
         $this->widget('zii.widgets.grid.CGridView', array(
             'id'=>'article-grid',
             'htmlOptions' => array('class' => 'article-table'),
