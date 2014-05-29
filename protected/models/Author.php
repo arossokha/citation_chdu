@@ -7,6 +7,7 @@
  * @property integer $authorId
  * @property string $fullName
  * @property string $photo
+ * @property float $index
  */
 class Author extends ActiveRecord
 {
@@ -26,7 +27,8 @@ class Author extends ActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fullName', 'length', 'max'=>200),
+            array('fullName', 'length', 'max'=>200),
+			array('index', 'number'),
 			// array('photo', 'length', 'max'=>500),
 			array(
                 'photo',
@@ -158,6 +160,11 @@ class Author extends ActiveRecord
             return false;
     	}
 
+        /**
+         * @TODO MOVE TO CORRECT PLACE
+         */
+        Author::updateAllIndexes();
+
     	return parent::afterSave();
     }
 
@@ -184,7 +191,7 @@ class Author extends ActiveRecord
 							'valueField' => 'categoryId',
 							'textField' => 'name',
 							'data' => array(
-								'model' => Category::model()->findAll() ,
+								'model' => Category::getAll() ,
 								'valueField' => 'categoryId',
 								'textField' => 'name',
 							)
@@ -208,5 +215,55 @@ class Author extends ActiveRecord
 		return CMap::mergeArray(parent::behaviors() , $bs);
 	}
 
+    protected static $_avgIndex = array();
+    public function getAvarageIndex() {
+        if(!self::$_avgIndex[$this->primaryKey] || self::$_avgIndex[$this->primaryKey] <= 0) {
+            // $indexes = array();
+            // foreach ($this->articles as $article) {
+            //     $indexes[] = $article->article->index;
+            // }
+            // self::$_avgIndex[$this->primaryKey] = array_sum($indexes) / count($indexes);
+            self::$_avgIndex[$this->primaryKey] = ArticleAuthor::model()->count('authorId =:aId',array(':aId'=> $this->primaryKey));
+        }
+        return self::$_avgIndex[$this->primaryKey];
+    }
+
+    public function getWorkCount() {
+        return count($this->articles);
+    }
+
+    protected static $_all = null;
+    public static function getAll() {
+        if(!self::$_all) {
+            self::$_all = self::model()->findAll();
+        }
+
+        return self::$_all;
+    }
+
+    public static function updateAllIndexes() {
+
+        $data = Yii::app()->db->createCommand('
+            SELECT au.authorId,COUNT(articleId) as acount FROM `Author` au
+            LEFT JOIN ArticleAuthor USING(authorId)
+            GROUP BY au.authorId')->queryAll();
+        $aData = Yii::app()->db->createCommand('
+            SELECT au.authorId, COUNT(auar.articleId) as arcount  FROM `Author` au
+            LEFT JOIN AuthorArticle auar ON au.authorId = auar.authorId
+            GROUP BY au.authorId ')->queryAll();
+        $articleCounts = array();
+        foreach ($aData as $row) {
+            $articleCounts[$row['authorId']] = $row['arcount'];
+        }
+        foreach ($data as $row) {
+            Yii::app()->db->createCommand('
+                UPDATE Author set `index` = :ind 
+                WHERE authorId = :aId
+            ')->execute(array(
+                    ':ind' => ($row['acount']/$articleCounts[$row['authorId']]),
+                    ':aId' => $row['authorId'],
+                ));
+        }
+    }
 
 }

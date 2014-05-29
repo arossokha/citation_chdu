@@ -34,6 +34,7 @@
 					array('label'=>'Home', 'url'=>array('/site/index')),
 					array('label'=>'Authors', 'url'=>array('/site/page', 'view'=>'authors')),
 					array('label'=>'Articles', 'url'=>array('/site/page', 'view'=>'articles')),
+					array('label'=>'FAQ', 'url'=>array('/faq')),
 					array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 					// array('label'=>'Pull', 'url'=>array('/site/pull')),
 				),

@@ -111,4 +111,13 @@ class Category extends ActiveRecord
 		
 		return CMap::mergeArray(parent::behaviors() , $bs);
 	}
+
+	protected static $_all = null;
+	public static function getAll() {
+		if(!self::$_all) {
+			self::$_all = self::model()->findAll();
+		}
+
+		return self::$_all;
+	}
 }

@@ -8,6 +8,7 @@
  * @property string $name
  * @property integer $categoryId
  * @property double $index
+ * @property integer $year
  * @property string $file
  */
 class Article extends ActiveRecord
@@ -29,7 +30,7 @@ class Article extends ActiveRecord
 		// will receive user inputs.
 		return array(
 			array('categoryId', 'numerical', 'integerOnly'=>true),
-			array('index', 'numerical'),
+			array('index, year', 'numerical'),
 			array('name', 'length', 'max'=>200),
 			// array('file', 'length', 'max'=>500),
 			array(
@@ -42,7 +43,7 @@ class Article extends ActiveRecord
             ) ,
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('articleId, name, categoryId, index, file', 'safe', 'on'=>'search'),
+			array('articleId, name, categoryId, index, year, file', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +70,7 @@ class Article extends ActiveRecord
 			'name' => 'Name',
 			'categoryId' => 'Category',
 			'index' => 'Index',
+			'year' => 'Year',
 			'file' => 'File',
 		);
 	}
@@ -94,8 +96,11 @@ class Article extends ActiveRecord
 		$criteria->compare('articleId',$this->articleId);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('categoryId',$this->categoryId);
+		$criteria->compare('year',$this->year);
 		$criteria->compare('index',$this->index);
-		// $criteria->compare('file',$this->file,true);
+        // $criteria->compare('file',$this->file,true);
+        $criteria->order = '`index` DESC';
+		$criteria->with = array('category','authors.author');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -129,8 +134,9 @@ class Article extends ActiveRecord
                 return false;
             }
             $this->file = $newFileUrl;
-        }
-        else {
+        } elseif(strpos($_POST[get_class($this)]['file'],'http://') !== false) {
+            $this->file = $_POST[get_class($this)]['file'];
+        } else {
             if ($this->isNewRecord) {
                 $this->addError('file', 'Укажите файл');
                 
@@ -173,6 +179,11 @@ class Article extends ActiveRecord
             return false;
     	}
 
+        /**
+         * @TODO MOVE TO CORRECT PLACE
+         */
+        Author::updateAllIndexes();
+
     	return parent::afterSave();
     }
 
@@ -191,10 +202,15 @@ class Article extends ActiveRecord
 						'attribute' => 'categoryId',
 						'type' => 'dropdown',
 						'data' => array(
-							'model' => Category::model()->findAll() ,
+							'model' => Category::getAll() ,
 							'valueField' => 'categoryId',
 							'textField' => 'name',
 						)
+					) ,
+					array(
+						'name' => 'Year',
+						'attribute' => 'year',
+						'type' => 'text',
 					) ,
 					array(
 						'name' => 'Index',
@@ -212,7 +228,7 @@ class Article extends ActiveRecord
                             
                             'type' => 'dropdown',
                             'data' => array(
-								'model' => Author::model()->findAll() ,
+								'model' => Author::getAll() ,
 								'valueField' => 'authorId',
 								'textField' => 'fullName',
 							),

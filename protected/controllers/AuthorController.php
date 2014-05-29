@@ -6,7 +6,7 @@ class AuthorController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
 
 	/**
 	 * @return array action filters
@@ -122,9 +122,24 @@ class AuthorController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Author');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		$categories = Yii::app()->db->createCommand('Select * from Category')->queryAll();
+		$data = array();
+		foreach ($categories as $category) {
+			$data[$category['name']] = new CActiveDataProvider('Author',array(
+					'pagination' => array(
+							'pageSize' => 12,
+						),
+					'criteria' => array(
+							'with' => array('categories'),
+							'order' => '`index` DESC',
+							'condition' => '`categories`.categoryId = '.$category['categoryId'],
+							'together'=>true,
+						)
+				));
+		}
+
+		$this->render('index', array(
+			'data'=>$data,
 		));
 	}
 

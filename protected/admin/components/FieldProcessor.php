@@ -154,11 +154,16 @@ class FieldProcessor
             case 'filedoc':{
                 $path = CHtml::value($model,$item['attributePath'] ? $item['attributePath'] : 'path');
                 if($path) {
-                    echo  CHtml::link('Download document...',$path,array('style' => 'color:red;'));
+                    echo  CHtml::link('Download ( or open ) document...',$path,array('style' => 'color:red;'));
                     echo "<div class='clear'></div><br />";
                 }
 
                 echo $form->fileField($model,$item['attribute'],'');
+                $value = $model->{$item['attribute']};
+                if(strpos($value, 'http://') === false) {
+                    $value = '';
+                }
+                echo " url: ".CHtml::textField((get_class($model).'['.$item['attribute'].']'),$value);
             }
             break;
             case 'view' :

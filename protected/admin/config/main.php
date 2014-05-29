@@ -112,6 +112,13 @@ return array(
                     'importPath' => 'application.models.*',
                     'model' => 'Category',
                 ),
+                array(
+					'name' => 'FAQ',
+					'path' => 'faq',
+					'class' => 'ModelManagerWidget',
+					'importPath' => 'application.models.*',
+					'model' => 'Faq',
+				),
 			),
 		)
 	),
