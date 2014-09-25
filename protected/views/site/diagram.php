@@ -132,7 +132,8 @@ $('#author-articles').highcharts({
         },
         tooltip: {
             formatter : function() {
-                return this.x[0];
+                // console.dir(this);
+                return this.x[0]+' ('+this.y+')';
             },
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr></td></tr>',
