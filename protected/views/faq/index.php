@@ -9,7 +9,7 @@ $this->menu=array(
 );
 ?>
 
-<?php $this->pageTitle="Faq - InGruz";  ?> <h1>Faq</h1>
+<?php $this->pageTitle="Faq";  ?> <h1>Faq</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=> $dataProvider,

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<title><?php echo CHtml::encode($this->pageTitle); ?> - Ingruz</title>
+	<title><?php echo CHtml::encode($this->pageTitle); ?> - Citation</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link href="/css/admin/style.css" title="compact" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="/js/toggleformtext.js"></script>

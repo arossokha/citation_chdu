@@ -13,7 +13,7 @@ class Controller extends CController
 	public $description = '';
 	public $keywords = '';
 	public $footerLogoPath = '/images/footer_logo.gif';
-	public $footerLogoUrl = 'ingruz.ru';
+	public $footerLogoUrl = 'citation.no-ip.info';
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */

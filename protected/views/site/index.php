@@ -17,6 +17,12 @@ $this->pageTitle=Yii::app()->name;
 			<div>Articles</div>
 		</div>
 	</a>
+	<a href="<?php echo $this->createUrl('/site/diagram'); ?>">
+		<div class="menu-container">
+			<img src="/images/graph.png">
+			<div>Diagrams</div>
+		</div>
+	</a>
 </div>
 
 <div class="top-table">
@@ -49,5 +55,6 @@ $this->pageTitle=Yii::app()->name;
 			}
 		?>
 	</table>
-	<a href="<?php echo $this->createUrl('/site/page', array('view'=>'articles')); ?>">View all -></a>
+	<br/>
+	<a href="<?php echo $this->createUrl('/article'); ?>">View all -></a>
 </div>

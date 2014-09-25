@@ -69,7 +69,7 @@ class Article extends ActiveRecord
 			'articleId' => 'Article',
 			'name' => 'Name',
 			'categoryId' => 'Category',
-			'index' => 'Index',
+			'index' => 'Index Citation',
 			'year' => 'Year',
 			'file' => 'File',
 		);
@@ -92,15 +92,22 @@ class Article extends ActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+        $alias = $this->getTableAlias(false,false);
+		$criteria->compare($alias.'.articleId',$this->articleId);
+		$criteria->compare($alias.'.name',$this->name,true);
+		$criteria->compare($alias.'.categoryId',$this->categoryId);
+		$criteria->compare($alias.'.year',$this->year);
+        $criteria->compare($alias.'.index',$this->index);
 
-		$criteria->compare('articleId',$this->articleId);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('categoryId',$this->categoryId);
-		$criteria->compare('year',$this->year);
-		$criteria->compare('index',$this->index);
-        // $criteria->compare('file',$this->file,true);
-        $criteria->order = '`index` DESC';
-		$criteria->with = array('category','authors.author');
+        if($_REQUEST['authorId'] > 0) {
+            $criteria->compare('authors.authorId',(int)$_REQUEST['authorId']);
+            $criteria->together = true;
+        }
+
+        if(!$_GET['Article_sort']) {
+            $criteria->order = $alias.'.`index` DESC';
+        }
+        $criteria->with = array('category','authors.author');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -256,15 +263,18 @@ class Article extends ActiveRecord
 		return CMap::mergeArray(parent::behaviors() , $bs);
 	}
 
-	public function getAuthorsList($asString = true) {
+	public function getAuthorsList($asString = true,$asLink = false) {
 
 		$data = array();
-		foreach ($this->authors as $author) {
-			$data[$author->authorId] = $author->author->fullName;
+        foreach (AuthorArticle::model()->findAll('articleId = :aId',array( ':aId' => $this->articleId )) as $author) {
+		// foreach ($this->authors as $author) {
+            $name = $asLink ? CHtml::link($author->author->fullName,Yii::app()->controller->createUrl('/author/'.$author->authorId)) 
+                : $author->author->fullName ;
+			$data[$author->authorId] = $name;
 		}
 
 		if($asString) {
-			return implode(',',$data);
+			return implode(', ',$data);
 		}
 		return $data;
 	}
@@ -272,8 +282,8 @@ class Article extends ActiveRecord
     public static function updateAllIndexes() {
 
         $data = Yii::app()->db->createCommand('
-            SELECT ar.articleId,COUNT(articleId) as acount FROM `Article` ar
-            LEFT JOIN ArticleArticle USING(articleId)
+            SELECT ar.articleId,COUNT(arar.articleId) as acount FROM `Article` ar
+            LEFT JOIN ArticleArticle arar USING(articleId)
             GROUP BY ar.articleId')->queryAll();
         foreach ($data as $row) {
             Yii::app()->db->createCommand('
@@ -284,6 +294,28 @@ class Article extends ActiveRecord
                     ':aId' => $row['articleId'],
                 ));
         }
+    }
+
+    protected static $_citationData = array();
+
+    public function getArticlesCitation() {
+
+        if(!isset(self::$_citationData[$this->articleId])) {
+            $data = Yii::app()->db->createCommand('
+                SELECT ac.articleId FROM `Article` ar
+                INNER JOIN ArticleArticle arar ON ar.articleId = arar.articleId AND ar.articleId = :aId
+                INNER JOIN Article ac ON arar.citarticleId = ac.articleId
+                ')->queryColumn(array(
+                    ':aId' => $this->primaryKey
+                ));
+            if($data) {
+                self::$_citationData[$this->articleId] = Article::model()->findAllByPk($data);
+            } else {
+                self::$_citationData[$this->articleId] = false;
+            }
+        }
+
+        return self::$_citationData[$this->articleId];
     }
 
 }

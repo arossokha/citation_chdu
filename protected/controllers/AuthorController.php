@@ -122,7 +122,14 @@ class AuthorController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$categories = Yii::app()->db->createCommand('Select * from Category')->queryAll();
+		$condition = '';
+		$params = array();
+		$cId = Yii::app()->request->getParam('categoryId');
+		if($cId) {
+			$condition = 'WHERE categoryId = :cId';
+			$params[':cId'] = $cId;
+		}
+		$categories = Yii::app()->db->createCommand('Select * from Category '.$condition)->queryAll(true,$params);
 		$data = array();
 		foreach ($categories as $category) {
 			$data[$category['name']] = new CActiveDataProvider('Author',array(

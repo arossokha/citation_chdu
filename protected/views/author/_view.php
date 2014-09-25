@@ -1,6 +1,5 @@
 <div class="item-container">
-<br />
-    <b> &nbsp;&nbsp;&nbsp;<?php echo CHtml::encode($data->index); ?></b>
+    <b style="background: url('/images/index_arrow.png'); display:inline-block; background-size: 70px;width: 70px;height: 23px;margin: 10px 0 0 10px;padding-top: 5px;"> &nbsp;&nbsp;<?php echo CHtml::encode($data->index); ?></b>
     <?php 
         $image = $data->photo ? : '/images/author.png';
         $imgData = getimagesize(Yii::getPathOfAlias('webroot').$image);

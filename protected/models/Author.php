@@ -28,7 +28,7 @@ class Author extends ActiveRecord
 		// will receive user inputs.
 		return array(
             array('fullName', 'length', 'max'=>200),
-			array('index', 'number'),
+			array('index', 'numerical'),
 			// array('photo', 'length', 'max'=>500),
 			array(
                 'photo',
@@ -229,7 +229,7 @@ class Author extends ActiveRecord
     }
 
     public function getWorkCount() {
-        return count($this->articles);
+        return count($this->getRelated('articles',true));
     }
 
     protected static $_all = null;
@@ -260,7 +260,7 @@ class Author extends ActiveRecord
                 UPDATE Author set `index` = :ind 
                 WHERE authorId = :aId
             ')->execute(array(
-                    ':ind' => ($row['acount']/$articleCounts[$row['authorId']]),
+                    ':ind' => ($row['acount']),
                     ':aId' => $row['authorId'],
                 ));
         }

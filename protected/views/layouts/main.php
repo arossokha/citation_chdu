@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/chartist.min.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/filter-form.css" />
@@ -32,8 +33,9 @@
 			<?php $this->widget('zii.widgets.CMenu',array(
 				'items'=>array(
 					array('label'=>'Home', 'url'=>array('/site/index')),
-					array('label'=>'Authors', 'url'=>array('/site/page', 'view'=>'authors')),
-					array('label'=>'Articles', 'url'=>array('/site/page', 'view'=>'articles')),
+					array('label'=>'Authors', 'url'=>array('/author')),
+					array('label'=>'Articles', 'url'=>array('/article')),
+					array('label'=>'Diagram', 'url'=>array('/site/diagram')),
 					array('label'=>'FAQ', 'url'=>array('/faq')),
 					array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 					// array('label'=>'Pull', 'url'=>array('/site/pull')),
@@ -42,8 +44,24 @@
 		</div><!-- mainmenu -->
 	</div>
 		<div class="search">
-			<input type="text" class="main-search" placeholder="Search by article name...">
-			<input type="submit" class="main-search-button"  value="">
+			<form action="/article" method="get" accept-charset="utf-8">
+		        <?php
+		            $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
+		                'name'=>'Article[name]',
+		                'source'=>'/site/articleautocomplete',
+		                'options' => array(
+		                    'minLength' => '2',
+		                    'showAnim' => 'fold',
+		                ),
+		                'htmlOptions'=>array(
+		                    'placeholder' => "Search by article name...",
+		                    'class' => "main-search"
+		                ),
+		            ));
+		        ?>
+				<input type="submit" class="main-search-button"  value="">
+	        </form>
+			</form>
 		</div>
 
 		

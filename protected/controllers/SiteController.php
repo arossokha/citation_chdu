@@ -165,5 +165,31 @@ class SiteController extends Controller
         }
 	}
 
+    public function actionArticleautocomplete() {
+        $term = Yii::app()->getRequest()->getParam('term');
+
+        if(Yii::app()->request->isAjaxRequest && $term) {
+            $modelName = "Article";
+            $dataField = 'name';
+            $valueField = 'articleId';
+            $criteria = new CDbCriteria;
+
+            $criteria->addSearchCondition($dataField, $term);
+            $criteria->limit = 10;
+            $models = ActiveRecord::model($modelName)->findAll($criteria);
+            $result = array();
+            foreach ($models as $model) {
+                $result[] = array($valueField => $model->{$valueField}, 'label' => $model->{$dataField});
+            }
+            echo CJSON::encode($result);
+            Yii::app()->end();
+        }
+    }
+
+    public function actionDiagram() {
+
+        $this->render('diagram');
+    }
+
 
 }

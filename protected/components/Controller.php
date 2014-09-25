@@ -36,6 +36,8 @@ class Controller extends CController
 		);
 
 		$cs->registerCoreScript('jquery.ui',array('position'=> CClientScript::POS_BEGIN));
+		// Yii::app()->clientScript->registerScriptFile('/js/chartist.js', CClientScript::POS_BEGIN);
+		Yii::app()->clientScript->registerScriptFile('/js/highcharts.js', CClientScript::POS_BEGIN);
 		Yii::app()->clientScript->registerScriptFile('/js/main.js', CClientScript::POS_BEGIN);
 
 		return parent::init();
